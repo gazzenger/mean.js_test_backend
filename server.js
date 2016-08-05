@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 
+
 var Message = mongoose.model('Message',{
     msg: String
 });
@@ -31,12 +32,14 @@ function GetMessages(req, res)
 {
     Message.find({}).exec(function(err,result){
         res.send(result);
+        //console.log(result);
     })
 }
 
 mongoose.connect("mongodb://localhost:27017/test", function(err,db){
     if(!err){
         console.log("we are connected to mongo");
+        //GetMessages();
     }
 })
 
